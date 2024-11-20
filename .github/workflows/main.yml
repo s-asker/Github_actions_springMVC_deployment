@@ -35,6 +35,10 @@ jobs:
         uses: opsverseio/sonarqube-quality-gate-action@0.1.0
         # Force to fail step after specific time.
         timeout-minutes: 5
+        env: #Environment variables should be defined for Quality Gate
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_URL }} #OPTIONAL
+          SET_SONAR_PROJECT_STATUS: true
 
 
 
