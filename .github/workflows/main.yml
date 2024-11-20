@@ -17,10 +17,11 @@ jobs:
           java-version: '11'
       
       - name: Setup SonarQube
-        uses: warchant/setup-sonar-scanner@v7 # Create github secrets for the following variables
+        uses: warchant/setup-sonar-scanner@v7
 
       - name: SonarQube Scan # Sources should include the path of the source code to be scanned
         # java.binaries should be defined if you're running a java project
+        # Create github secrets for the following variables
         run: |
           sonar-scanner \
             -Dsonar.host.url=${{ secrets.SONAR_URL }} \
@@ -31,13 +32,11 @@ jobs:
             -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/
 
         # Check the Quality Gate status.
-      - name: Set up Sonar Quality Gate
-        uses: dieuhd/sonar-quality-gate@v1
+      - name: SonarQube Quality Gate check
+        id: sonarqube-quality-gate-check
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        # Force to fail step after specific time.
+        timeout-minutes: 5
         env:
-          SONAR_URL: ${{ secrets.SONAR_URL }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
-        with:
-          login: ${{ secrets.SONAR_TOKEN }}
-          url: ${{ secrets.SONAR_URL }}
-          projectKey: ${{ secrets.SONAR_PROJECT_KEY }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} #OPTIONAL
