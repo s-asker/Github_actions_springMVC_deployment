@@ -25,6 +25,7 @@ jobs:
           -Dsonar.organization=${{ secrets.SONAR_ORG }}
           -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
           -Dsonar.sources=src/
+          -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/
 
 
 
