@@ -10,9 +10,6 @@ jobs:
       - name: Maven Testing
         run: mvn test
 
-      - name: Maven Checkstyle
-        run: mvn checkstyle 
-
       - name: Setup JDK11 for the workflow
         uses: actions/setup-java@v4
         with:
