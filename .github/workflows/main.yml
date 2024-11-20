@@ -1,0 +1,8 @@
+name: Spring MVC Project Deployment
+on: workflow_dispatch
+jobs:
+  Testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: workflow_testing
+        run: echo "Works"
