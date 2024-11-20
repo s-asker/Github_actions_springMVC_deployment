@@ -26,6 +26,8 @@ jobs:
           -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
           -Dsonar.sources=src/
           -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/
+          # Sources should include the path of the source code to be scanned
+          # java.binaries should be defined if you're junning a java project
 
 
 
