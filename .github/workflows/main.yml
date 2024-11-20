@@ -4,5 +4,30 @@ jobs:
   Testing:
     runs-on: ubuntu-latest
     steps:
-      - name: workflow_testing
-        run: echo "Works"
+      - name: Clone source code from the repo 
+        uses: actions/checkout@v4.2.2 # From github marketplace
+
+      - name: Maven Testing
+        run: mvn test
+
+      - name: Maven Checkstyle
+        run: mvn checkstyle 
+
+      - name: Setup JDK11 for the workflow
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '11'
+      
+      - name: Setup SonarQube
+        uses: warchant/setup-sonar-scanner@v7
+
+    #   Run sonar-scanner
+      - name: SonarQube Scan # Use github secrets for these variables
+        run: sonar-scanner
+           -Dsonar.host.url=${{ secrets.SONAR_URL }}
+           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+           -Dsonar.organization=${{ secrets.SONAR_ORG }}
+           -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+           -Dsonar.sources=src/ # The path of the code we want to scan
+
