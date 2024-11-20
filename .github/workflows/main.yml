@@ -29,6 +29,16 @@ jobs:
           # Sources should include the path of the source code to be scanned
           # java.binaries should be defined if you're junning a java project
 
+        # Check the Quality Gate status.
+      - name: Set up Sonar Quality Gate
+        uses: dieuhd/sonar-quality-gate@v1
+        with:
+          login: ${{ secrets.SONAR_TOKEN }}
+          url: ${{ secrets.SONAR_URL }}
+          projectKey: ${{ secrets.SONAR_PROJECT_KEY }}
+
+
+
 
 
 
