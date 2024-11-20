@@ -19,14 +19,7 @@ jobs:
       - name: Setup SonarQube
         uses: warchant/setup-sonar-scanner@v7
 
-      - name: SonarQube Scan # Use github secrets for these variables
-        run: sonar-scanner
-          -Dsonar.host.url=${{ secrets.SONAR_URL }}
-          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-          -Dsonar.organization=${{ secrets.SONAR_ORG }}
-          -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
-          -Dsonar.sources=src/   # The path of the code we want to scan
-          -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/ # Should be used for java
+
 
 
           
