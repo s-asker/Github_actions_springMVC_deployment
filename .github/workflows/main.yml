@@ -17,36 +17,25 @@ jobs:
           java-version: '11'
       
       - name: Setup SonarQube
-        uses: warchant/setup-sonar-scanner@v7
-      - name: SonarQube Scan # Use github secrets for these variables
-        run: sonar-scanner
-          -Dsonar.host.url=${{ secrets.SONAR_URL }}
-          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-          -Dsonar.organization=${{ secrets.SONAR_ORG }}
-          -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
-          -Dsonar.sources=src/
-          -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/
-          # Sources should include the path of the source code to be scanned
-          # java.binaries should be defined if you're junning a java project
+        uses: warchant/setup-sonar-scanner@v7 # Create github secrets for the following variables
+
+      - name: SonarQube Scan # Sources should include the path of the source code to be scanned
+        # java.binaries should be defined if you're running a java project
+        run: |
+          sonar-scanner \
+            -Dsonar.host.url=${{ secrets.SONAR_URL }} \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
+            -Dsonar.organization=${{ secrets.SONAR_ORG }} \
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} \
+            -Dsonar.sources=src/ \
+            -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/
 
         # Check the Quality Gate status.
-      - name: SonarQube Quality Gate check
-        id: sonarqube-quality-gate-check
-        uses: opsverseio/sonarqube-quality-gate-action@0.1.0
+      - name: SonarQube Quality Gate Check Action
+        uses: OpsVerseIO/sonarqube-quality-gate-action@0.2.0
         # Force to fail step after specific time.
         timeout-minutes: 5
         env: #Environment variables should be defined for Quality Gate
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_URL }} #OPTIONAL
           SET_SONAR_PROJECT_STATUS: true
-
-
-
-
-
-
-          
-
-
-
-
