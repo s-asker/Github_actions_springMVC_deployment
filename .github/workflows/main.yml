@@ -34,7 +34,7 @@ jobs:
             -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/
           
   BUILD_AND_PUSH_TO_ECR:
-    needs: SourceCode_testing
+    needs: SourceCode_Testing
     runs-on: ubuntu-latest
     steps:
       - name: Clone source code from the repo
