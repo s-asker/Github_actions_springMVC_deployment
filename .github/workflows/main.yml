@@ -47,7 +47,7 @@ jobs:
           sed -i 's/db01/${{ secrets.RDS_ENDPOINT }}/' src/main/resources/application.properties
 
       - name: Build docker image and upload it to ECR
-        uses: docker://ghcr.io/kciter/aws-ecr-action:latest
+        uses: kciter/aws-ecr-action@v5
         with:
           access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -56,4 +56,5 @@ jobs:
           repo: ecr-actions
           region: ${{ env.REGION }}
           dockerfile: ./Dockerfile
+          path: "."
 
