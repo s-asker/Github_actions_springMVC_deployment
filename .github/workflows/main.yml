@@ -54,6 +54,6 @@ jobs:
           account_id: ${{ secrets.AWS_ACCOUNT_ID }}
           tags: latest,${{ github.sha }}
           repo: ecr-actions
-          region: ${{ env.AWS_REGION }}
+          region: ${{ env.REGION }}
           dockerfile: ./Dockerfile
 
