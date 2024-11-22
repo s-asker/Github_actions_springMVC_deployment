@@ -57,4 +57,13 @@ jobs:
           region: ${{ env.REGION }}
           dockerfile: ./Dockerfile
           path: "."
+          
+
+      - name: Deploy to ECS
+        env:
+          ECS_CLUSTER: ${{ secrets.ECS_CLUSTER }}
+          ECS_SERVICE: ${{ secrets.ECS_SERVICE }}
+        run: |
+          aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment
+
 
