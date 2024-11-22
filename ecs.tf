@@ -1,6 +1,6 @@
 # Create CloudWatch Log Group
 resource "aws_cloudwatch_log_group" "ecs_log_group" {
-  name              = "/ecs/my-fargate-service"
+  name              = "/ecs/fargate-service"
   retention_in_days = 7
 }
 
@@ -9,19 +9,19 @@ resource "aws_ecs_task_definition" "fargate_task" {
   family                   = "my-fargate-task"
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
-  cpu                      = "512"  # 0.5 vCPU
-  memory                   = "1024" # 1 GB RAM
+  cpu                      = "512"
+  memory                   = "1024" # Check AWS documentation for cpu-memory combinations
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
 
   container_definitions = jsonencode([
     {
-      name        = "my-fargate-container",
-      image       = "${aws_ecr_repository.ecr.repository_url}:latest"
-      essential   = true,
+      name      = "my-fargate-container",
+      image     = "${aws_ecr_repository.foo.repository_url}:latest"
+      essential = true,
       portMappings = [
         {
-          containerPort = 80,
-          hostPort      = 80,
+          containerPort = 8080,
+          hostPort      = 8080,
           protocol      = "tcp"
         }
       ],
@@ -29,7 +29,7 @@ resource "aws_ecs_task_definition" "fargate_task" {
         logDriver = "awslogs",
         options = {
           "awslogs-group"         = aws_cloudwatch_log_group.ecs_log_group.name
-          "awslogs-region"        = "us-east-1"
+          "awslogs-region"        = "us-east-2"
           "awslogs-stream-prefix" = "ecs"
         }
       }
@@ -64,14 +64,14 @@ resource "aws_iam_policy_attachment" "ecs_task_execution_policy" {
 
 # ECS Service
 resource "aws_ecs_service" "fargate_service" {
-  name            = "my-fargate-service"
+  name            = "fargate-service"
   cluster         = aws_ecs_cluster.my_cluster.id
   task_definition = aws_ecs_task_definition.fargate_task.arn
   desired_count   = 1
   launch_type     = "FARGATE"
 
   network_configuration {
-    subnets          = ["subnet-0123456789abcdef0"] # Replace with your subnet ID
+    subnets          = ["subnet-0da724c295f8b5914"] # It's better to create a complete VPC and reference your subnet here
     security_groups  = [aws_security_group.ecs_sg.id]
     assign_public_ip = true
   }
@@ -79,18 +79,17 @@ resource "aws_ecs_service" "fargate_service" {
 
 # ECS Cluster
 resource "aws_ecs_cluster" "my_cluster" {
-  name = "my-cluster"
+  name = "mvc-cluster"
 }
 
 # Security Group for ECS Tasks
 resource "aws_security_group" "ecs_sg" {
   name_prefix = "ecs-sg-"
-  description = "Allow HTTP traffic"
-  vpc_id      = "vpc-0123456789abcdef0" # Replace with your VPC ID
+  description = "Allow HTTP traffic for ecs"
 
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }

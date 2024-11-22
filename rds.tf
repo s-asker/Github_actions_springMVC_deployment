@@ -73,11 +73,18 @@ resource "aws_security_group" "dbsg" {
   }
 }
 
-resource "aws_vpc_security_group_ingress_rule" "db_rules" {
+resource "aws_vpc_security_group_ingress_rule" "ec2db_rules" {
   ip_protocol                  = "tcp"
   security_group_id            = aws_security_group.dbsg.id
   from_port                    = "3306"
   referenced_security_group_id = aws_security_group.ec2ssh.id # Accept connection from ec2 instance only
+  to_port                      = "3306"
+}
+resource "aws_vpc_security_group_ingress_rule" "ecsdb_rules" {
+  ip_protocol                  = "tcp"
+  security_group_id            = aws_security_group.dbsg.id
+  from_port                    = "3306"
+  referenced_security_group_id = aws_security_group.ecs_sg.id # Accept connection from ec2 instance only
   to_port                      = "3306"
 }
 
