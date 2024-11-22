@@ -1,5 +1,9 @@
 name: Spring MVC Project Deployment
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - main  # Trigger only for pushes to the 'main' branch
+  workflow_dispatch:
 env:
   REGION: us-east-2
 jobs:
@@ -64,6 +68,6 @@ jobs:
           ECS_CLUSTER: ${{ secrets.ECS_CLUSTER }}
           ECS_SERVICE: ${{ secrets.ECS_SERVICE }}
         run: |
-          aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment
+          aws ecs update-service --region ${{ env.REGION }} --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment
 
 
