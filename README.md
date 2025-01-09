@@ -209,7 +209,7 @@ This section provides an overview of the key steps, configurations, and static a
 ## 3. MySQL Tables
 ![MySQL Tables](images/Screenshot_2024-11-21_164253.png)  
 *Displays the tables available in the MySQL database.*
-
+*Of course, the password that is shown in the image is just for demonstration purposes(The instance is already terminated), it shouldn't be shown in a real-world scenario.*
 ---
 
 ## 4. Project Directory Structure
@@ -218,73 +218,68 @@ This section provides an overview of the key steps, configurations, and static a
 
 ---
 
-## 5. MySQL Connection
-![MySQL Connection](images/Screenshot_2024-11-21_163744.png)  
-*Shows the successful connection to the MySQL database.*
 
----
-
-## 6. Ubuntu Package Updates
+## 5. Ubuntu Package Updates
 ![Ubuntu Package Updates](images/Screenshot_2024-11-21_163512.png)  
 *Displays the process of updating packages on an Ubuntu system.*
 
 ---
 
-## 7. Static Analysis Results
+## 6. Static Analysis Results
 ![Static Analysis Results](images/Screenshot_2025-01-09_081918.png)  
 *Shows the results of the static code analysis, including metrics like security, reliability, and maintainability.*
 
 ---
 
-## 8. Setup Java JDK Action
+## 7. Setup Java JDK Action
 ![Setup Java JDK Action](images/Screenshot_2024-11-20_191953.png)  
 *Displays the GitHub Action for setting up Java JDK.*
 
 ---
 
-## 9. Repository Settings - Initial overview of Secrets
+## 8. Repository Settings - Initial overview of Secrets
 ![Repository Settings - Actions Secrets](images/Screenshot_2024-11-20_191207.png)  
 *Shows the repository settings for managing Actions secrets and variables.*
 
 ---
 
-## 10. GitHub Checkout Action
+## 9. GitHub Checkout Action
 ![GitHub Checkout Action](images/Screenshot_2024-11-20_185717.png)  
 *Shows the GitHub Action for checking out a repository.*
 
 ---
 
-## 11. Git Configuration
+## 10. Git Configuration
 ![Git Configuration](images/Screenshot_2024-11-20_180051.png)  
 *Displays the Git configuration for user name and email.*
 
 ---
 
-## 12. Git SSH Configuration
+## 11. Git SSH Configuration
 ![Git SSH Configuration](images/Screenshot_2024-11-20_180040.png)  
 *Shows the Git SSH configuration for the repository.*
 
 ---
 
-## 13. Git Repository Cloning
+## 12. Git Repository Cloning
 ![Git Repository Cloning](images/Screenshot_2024-11-20_175741.png)  
 *Demonstrates the process of cloning a Git repository.*
 
 ---
 
-## 14. SSH Authentication
+## 13. SSH Authentication
 ![SSH Authentication](images/Screenshot_2024-11-20_175138.png)  
 *Shows successful SSH authentication with GitHub.*
 
 ---
 
-## 15. Adding SSH Key to GitHub
+## 14. Adding SSH Key to GitHub
 ![Adding SSH Key to GitHub](images/Screenshot_2024-11-20_175013.png)  
 *Displays the process of adding a new SSH key to GitHub.*
 
 ---
 
-## 16. Generating SSH Key
+## 15. Generating SSH Key
 ![Generating SSH Key](images/Screenshot_2024-11-20_174316.png)  
 *Demonstrates the process of generating a new SSH key.*
 
