@@ -31,6 +31,17 @@ The goal is to create a seamless, secure, and scalable deployment pipeline for t
 
 ---
 
+## Prerequisites
+
+Before proceeding, ensure you have the following:
+
+1. **GitHub Repository**: The Spring MVC application code should be hosted on GitHub.
+2. **AWS Account**: An AWS account with the necessary permissions to create and manage ECR, ECS, RDS, EC2, and IAM resources.
+3. **Terraform Installed**: Terraform should be installed on your local machine or CI/CD environment.
+4. **Docker Installed**: Docker should be installed for building and pushing Docker images.
+5. **SonarQube Account**: A SonarQube account for code quality scanning (optional but recommended).
+
+---
 ## Project Overview
 
 The project is divided into the following main components:
@@ -127,8 +138,8 @@ jobs:
         run: |
           aws ecs update-service --region ${{ env.REGION }} --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment
 ```
-IMPORTANT NOTE:
-This code will work if you have your image tagged with latest every build, otherwise you should register the new taskdef to use the new image and update the service to use the new task def
+**IMPORTANT NOTE**:
+This code will work if you have your image tagged with 'latest' every build, otherwise you should register the new taskdef to use the new image and update the service to use the new task def
 ---
 
 
@@ -165,67 +176,6 @@ Before running this workflow, configure the following secrets in your repository
 ### Dockerfile
 - A multi-stage Dockerfile is used to build the Spring MVC application and deploy it to a Tomcat server.
 
-### Security and Best Practices
-- Sensitive information is managed using GitHub secrets.
-- Code quality is ensured through SonarQube integration.
-- Infrastructure is managed as code using Terraform, ensuring consistency and reproducibility.
-
----
-
-## Prerequisites
-
-Before proceeding, ensure you have the following:
-
-1. **GitHub Repository**: The Spring MVC application code should be hosted on GitHub.
-2. **AWS Account**: An AWS account with the necessary permissions to create and manage ECR, ECS, RDS, EC2, and IAM resources.
-3. **Terraform Installed**: Terraform should be installed on your local machine or CI/CD environment.
-4. **Docker Installed**: Docker should be installed for building and pushing Docker images.
-5. **SonarQube Account**: A SonarQube account for code quality scanning (optional but recommended).
-
----
-
-## GitHub Actions Workflow
-
-The GitHub Actions workflow automates the following steps:
-
-1. **Clone Repository**: Clones the Spring MVC application code.
-2. **Maven Testing**: Runs unit tests using Maven.
-3. **Setup JDK 11**: Configures the Java environment.
-4. **SonarQube Scan**: Performs a code quality scan using SonarQube.
-5. **Build and Push to ECR**: Builds a Docker image and pushes it to AWS ECR.
-6. **Deploy to ECS**: Deploys the Docker image to AWS ECS.
-
----
-
-## AWS Infrastructure Setup
-
-The AWS infrastructure is provisioned using Terraform and includes the following resources:
-
-1. **ECR Repository**: For storing Docker images.
-2. **ECS Cluster and Service**: For running the application in a containerized environment.
-3. **RDS Instance**: For hosting the MySQL database.
-4. **EC2 Instance**: For accessing the RDS instance.
-5. **IAM Roles and Policies**: For managing permissions.
-6. **Security Groups**: For controlling network traffic.
-
----
-
-## Terraform Configuration
-
-The Terraform configuration files define the AWS infrastructure. Key files include:
-
-- **ECR Configuration**
-- **ECS Configuration**
-- **RDS Configuration**
-
----
-
-## Dockerfile
-
-The Dockerfile is used to build the Spring MVC application and deploy it to a Tomcat server. It is a multi-stage Dockerfile to optimize the build process.
-
----
-
 ## Security and Best Practices
 
 - **Sensitive Information**: Managed using GitHub secrets.
@@ -234,60 +184,96 @@ The Dockerfile is used to build the Spring MVC application and deploy it to a To
 
 ---
 
-## Screenshots
+# Project Screenshots
 
-Below are screenshots of the setup and deployment process:
-
-### 1. GitHub Actions Workflow
-![GitHub Actions Workflow](./images/Screenshot_2024-11-21_164253.png)  
-*GitHub Actions workflow running Maven tests and SonarQube scan.*
+This section provides an overview of the key steps and configurations for the project, supported by screenshots.
 
 ---
 
-### 2. AWS ECR Repository
-![AWS ECR Repository](./images/Screenshot_2024-11-21_163944.png)  
-*AWS ECR repository created using Terraform for storing Docker images.*
+## 1. Repository Secrets
+![Repository Secrets](images/Screenshot_2024-11-21_165030.png)  
+*Shows the repository secrets configured for the project.*
 
 ---
 
-### 3. MySQL Database Connection
-![MySQL Database Connection](./images/Screenshot_2024-11-21_164318.png)  
-*Connecting to the MySQL RDS instance from the EC2 instance.*
+## 2. MySQL Database Interaction
+![MySQL Database Interaction](images/Screenshot_2024-11-21_164318.png)  
+*Demonstrates interaction with the MySQL database, including showing tables and querying data.*
 
 ---
 
-### 4. Terraform Outputs
-![Terraform Outputs](./images/Screenshot_2024-11-21_165030.png)  
-*Terraform outputs showing AWS access keys and other configurations.*
+## 3. MySQL Tables
+![MySQL Tables](images/Screenshot_2024-11-21_164253.png)  
+*Displays the tables available in the MySQL database.*
 
 ---
 
-### 5. GitHub Repository Secrets
-![GitHub Repository Secrets](./images/Screenshot_2024-11-21_165030.png)  
-*GitHub repository secrets used for storing sensitive information like AWS credentials and SonarQube tokens.*
+## 4. Project Directory Structure
+![Project Directory Structure](images/Screenshot_2024-11-21_163944.png)  
+*Shows the directory structure of the project, including key files like `application.properties` and SQL scripts.*
 
 ---
 
-### 6. ECS Task Definition
-![ECS Task Definition](./images/Screenshot_2024-11-20_191953.png)  
-*ECS task definition showing container configuration and logging setup.*
+## 5. MySQL Connection
+![MySQL Connection](images/Screenshot_2024-11-21_163744.png)  
+*Shows the successful connection to the MySQL database.*
 
 ---
 
-### 7. EC2 Instance SSH Access
-![EC2 Instance SSH Access](./images/Screenshot_2024-11-20_175138.png)  
-*SSH access to the EC2 instance for database management.*
+## 6. Ubuntu Package Updates
+![Ubuntu Package Updates](images/Screenshot_2024-11-21_163512.png)  
+*Displays the process of updating packages on an Ubuntu system.*
 
 ---
 
-### 8. RDS Instance Configuration
-![RDS Instance Configuration](./images/Screenshot_2024-11-20_174822.png)  
-*RDS instance configuration showing MySQL database details.*
+## 7. Setup Java JDK Action
+![Setup Java JDK Action](images/Screenshot_2024-11-20_191953.png)  
+*Displays the GitHub Action for setting up Java JDK.*
 
 ---
 
-### 9. GitHub Actions Workflow Success
-![GitHub Actions Workflow Success](./images/Screenshot_2025-01-09_081918.png)  
-*Successful execution of the GitHub Actions workflow with SonarQube analysis results.*
+## 8. Repository Settings - Actions Secrets
+![Repository Settings - Actions Secrets](images/Screenshot_2024-11-20_191207.png)  
+*Shows the repository settings for managing Actions secrets and variables.*
 
 ---
+
+## 9. GitHub Checkout Action
+![GitHub Checkout Action](images/Screenshot_2024-11-20_185717.png)  
+*Shows the GitHub Action for checking out a repository.*
+
+---
+
+## 10. Git Configuration
+![Git Configuration](images/Screenshot_2024-11-20_180051.png)  
+*Displays the Git configuration for user name and email.*
+
+---
+
+## 11. Git SSH Configuration
+![Git SSH Configuration](images/Screenshot_2024-11-20_180040.png)  
+*Shows the Git SSH configuration for the repository.*
+
+---
+
+## 12. Git Repository Cloning
+![Git Repository Cloning](images/Screenshot_2024-11-20_175741.png)  
+*Demonstrates the process of cloning a Git repository.*
+
+---
+
+## 13. SSH Authentication
+![SSH Authentication](images/Screenshot_2024-11-20_175138.png)  
+*Shows successful SSH authentication with GitHub.*
+
+---
+
+## 14. Adding SSH Key to GitHub
+![Adding SSH Key to GitHub](images/Screenshot_2024-11-20_175013.png)  
+*Displays the process of adding a new SSH key to GitHub.*
+
+---
+
+## 15. Generating SSH Key
+![Generating SSH Key](images/Screenshot_2024-11-20_174316.png)  
+*Demonstrates the process of generating a new SSH key.*
