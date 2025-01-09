@@ -203,13 +203,13 @@ This section provides an overview of the key steps, configurations, and static a
 ## 2. MySQL Database Interaction
 ![MySQL Database Interaction](images/Screenshot_2024-11-21_164318.png)  
 *Demonstrates interaction with the MySQL database, including showing tables and querying data.*
+Of course, the password that is shown in the image is just for demonstration purposes(The instance is already terminated), it shouldn't be shown in a real-world scenario.
 
 ---
 
 ## 3. MySQL Tables
 ![MySQL Tables](images/Screenshot_2024-11-21_164253.png)  
 *Displays the tables available in the MySQL database.*
-*Of course, the password that is shown in the image is just for demonstration purposes(The instance is already terminated), it shouldn't be shown in a real-world scenario.*
 ---
 
 ## 4. Project Directory Structure
