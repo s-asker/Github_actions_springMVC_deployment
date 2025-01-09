@@ -277,3 +277,8 @@ This section provides an overview of the key steps and configurations for the pr
 ## 15. Generating SSH Key
 ![Generating SSH Key](images/Screenshot_2024-11-20_174316.png)  
 *Demonstrates the process of generating a new SSH key.*
+
+---
+
+## ** Acknowledgements **
+- Special thanks to the developers of the MVC application, I forked the project from [Visualpath IT], for providing the base code for this project.
