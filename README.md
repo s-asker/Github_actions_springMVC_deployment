@@ -280,5 +280,5 @@ This section provides an overview of the key steps and configurations for the pr
 
 ---
 
-## ** Acknowledgements **
+## **Acknowledgements**
 - Special thanks to the developers of the MVC application, I forked the project from [Visualpath IT], for providing the base code for this project.
