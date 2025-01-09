@@ -186,10 +186,6 @@ Before running this workflow, configure the following secrets in your repository
 
 # Project Screenshots
 
-This section provides an overview of the key steps and configurations for the project, supported by screenshots.
-
-# Project Screenshots
-
 This section provides an overview of the key steps, configurations, and static analysis results for the project, supported by screenshots.
 
 ---
