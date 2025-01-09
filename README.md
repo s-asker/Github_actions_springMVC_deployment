@@ -169,7 +169,7 @@ jobs:
           ECS_SERVICE: ${{ secrets.ECS_SERVICE }}
         run: |
           aws ecs update-service --region ${{ env.REGION }} --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment
-
+```
 ## AWS Infrastructure Setup
 
 The AWS infrastructure is provisioned using Terraform and includes the following resources:
