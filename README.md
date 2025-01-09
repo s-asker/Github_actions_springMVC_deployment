@@ -188,6 +188,10 @@ Before running this workflow, configure the following secrets in your repository
 
 This section provides an overview of the key steps and configurations for the project, supported by screenshots.
 
+# Project Screenshots
+
+This section provides an overview of the key steps, configurations, and static analysis results for the project, supported by screenshots.
+
 ---
 
 ## 1. Repository Secrets
@@ -226,59 +230,63 @@ This section provides an overview of the key steps and configurations for the pr
 
 ---
 
-## 7. Setup Java JDK Action
+## 7. Static Analysis Results
+![Static Analysis Results](images/Screenshot_2025-01-09_081918.png)  
+*Shows the results of the static code analysis, including metrics like security, reliability, and maintainability.*
+
+---
+
+## 8. Setup Java JDK Action
 ![Setup Java JDK Action](images/Screenshot_2024-11-20_191953.png)  
 *Displays the GitHub Action for setting up Java JDK.*
 
 ---
 
-## 8. Repository Settings - Actions Secrets
+## 9. Repository Settings - Initial overview of Secrets
 ![Repository Settings - Actions Secrets](images/Screenshot_2024-11-20_191207.png)  
 *Shows the repository settings for managing Actions secrets and variables.*
 
 ---
 
-## 9. GitHub Checkout Action
+## 10. GitHub Checkout Action
 ![GitHub Checkout Action](images/Screenshot_2024-11-20_185717.png)  
 *Shows the GitHub Action for checking out a repository.*
 
 ---
 
-## 10. Git Configuration
+## 11. Git Configuration
 ![Git Configuration](images/Screenshot_2024-11-20_180051.png)  
 *Displays the Git configuration for user name and email.*
 
 ---
 
-## 11. Git SSH Configuration
+## 12. Git SSH Configuration
 ![Git SSH Configuration](images/Screenshot_2024-11-20_180040.png)  
 *Shows the Git SSH configuration for the repository.*
 
 ---
 
-## 12. Git Repository Cloning
+## 13. Git Repository Cloning
 ![Git Repository Cloning](images/Screenshot_2024-11-20_175741.png)  
 *Demonstrates the process of cloning a Git repository.*
 
 ---
 
-## 13. SSH Authentication
+## 14. SSH Authentication
 ![SSH Authentication](images/Screenshot_2024-11-20_175138.png)  
 *Shows successful SSH authentication with GitHub.*
 
 ---
 
-## 14. Adding SSH Key to GitHub
+## 15. Adding SSH Key to GitHub
 ![Adding SSH Key to GitHub](images/Screenshot_2024-11-20_175013.png)  
 *Displays the process of adding a new SSH key to GitHub.*
 
 ---
 
-## 15. Generating SSH Key
+## 16. Generating SSH Key
 ![Generating SSH Key](images/Screenshot_2024-11-20_174316.png)  
 *Demonstrates the process of generating a new SSH key.*
-
----
 
 ## **Acknowledgements**
 **Special thanks to the developers of the MVC application, for providing the base code for this project. I forked the project from [Visualpath IT]**
